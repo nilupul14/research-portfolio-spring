@@ -15,7 +15,7 @@ public class Publication {
 
     private String name;
     private String type;
-    private Date year;
+//    private Date year;
     private String keyword;
 
     public Long getPublicationId() {
@@ -42,13 +42,13 @@ public class Publication {
         this.type = type;
     }
 
-    public Date getYear() {
-        return year;
-    }
-
-    public void setYear(Date year) {
-        this.year = year;
-    }
+//    public Date getYear() {
+//        return year;
+//    }
+//
+//    public void setYear(Date year) {
+//        this.year = year;
+//    }
 
     public String getKeyword() {
         return keyword;

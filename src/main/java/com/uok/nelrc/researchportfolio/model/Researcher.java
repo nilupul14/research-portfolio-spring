@@ -11,7 +11,6 @@ public class Researcher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String name;
     private String designation;
     private String department;

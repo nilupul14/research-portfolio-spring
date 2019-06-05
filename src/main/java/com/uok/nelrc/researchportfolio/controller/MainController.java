@@ -7,12 +7,11 @@ import com.uok.nelrc.researchportfolio.repository.PublicationRepository;
 import com.uok.nelrc.researchportfolio.repository.ResearchPaperRepository;
 import com.uok.nelrc.researchportfolio.repository.ResearcherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@Controller
+@RestController
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RequestMapping(value = "portfolio")
 public class MainController {
@@ -49,11 +48,12 @@ public class MainController {
     }
 
     @PutMapping("/researcherUpdate/{id}")
-    public Researcher updateResearcher(@RequestBody Researcher researcher) {
+    public Researcher updateResearcher(@PathVariable("id") Long id, @RequestBody Researcher researcher) {
+        researcher.setId(id);
         return researcherRepository.save(researcher);
     }
 
-    @DeleteMapping("resercherDelete/{id}")
+    @DeleteMapping("researcherDelete/{id}")
     public void deleteResearcher(@PathVariable("id") Long id) {
         researcherRepository.deleteById(id);
     }
@@ -68,8 +68,8 @@ public class MainController {
     }
 
     @GetMapping("/author/{id}")
-    public Optional<Author> authorFindById(@PathVariable("id") Long author_id) {
-        return authorRepository.findById(author_id);
+    public Optional<Author> authorFindById(@PathVariable("id") Long authorId) {
+        return authorRepository.findById(authorId);
     }
 
     @PostMapping("/authorCreate")
@@ -78,13 +78,14 @@ public class MainController {
     }
 
     @PutMapping("/authorUpdate/{id}")
-    public Author updateResearcher(@RequestBody Author author) {
+    public Author updateResearcher(@PathVariable("id") Long authorId,@RequestBody Author author) {
+        author.setAuthorId(authorId);
         return authorRepository.save(author);
     }
 
     @DeleteMapping("authorDelete/{id}")
-    public void deleteAuthor(@PathVariable("id") Long author_id) {
-        researcherRepository.deleteById(author_id);
+    public void deleteAuthor(@PathVariable("id") Long authorId) {
+        researcherRepository.deleteById(authorId);
     }
 
     /*
@@ -96,9 +97,9 @@ public class MainController {
         return fundRepository.findAll();
     }
 
-    @GetMapping("/fund/{fund_id}")
-    public Optional<Fund> FundFindById(@PathVariable("fund_id") Long fund_id) {
-        return fundRepository.findById(fund_id);
+    @GetMapping("/fund/{id}")
+    public Optional<Fund> FundFindById(@PathVariable("id") Long fundId) {
+        return fundRepository.findById(fundId);
     }
 
     @PostMapping("/fundCreate")
@@ -106,14 +107,15 @@ public class MainController {
         return fundRepository.save(fund);
     }
 
-    @PutMapping("/fundUpdate/{fund_id}")
-    public Fund updateFund(@RequestBody Fund fund) {
+    @PutMapping("/fundUpdate/{id}")
+    public Fund updateFund(@PathVariable("id") Long fundId,@RequestBody Fund fund) {
+        fund.setFundId(fundId);
         return fundRepository.save(fund);
     }
 
-    @DeleteMapping("fundDelete/{fund_id}")
-    public void deleteFund(@PathVariable("fund_id") Long fund_id) {
-        researcherRepository.deleteById(fund_id);
+    @DeleteMapping("/fundDelete/{id}")
+    public void deleteFund(@PathVariable("id") Long fundId) {
+        fundRepository.deleteById(fundId);
     }
 
     /*
@@ -125,9 +127,9 @@ public class MainController {
         return publicationRepository.findAll();
     }
 
-    @GetMapping("/publication/{publication_id}")
-    public Optional<Publication> PublicationFindById(@PathVariable("publication_id") Long publication_id) {
-        return publicationRepository.findById(publication_id);
+    @GetMapping("/publication/{id}")
+    public Optional<Publication> PublicationFindById(@PathVariable("id") Long publicationId) {
+        return publicationRepository.findById(publicationId);
     }
 
     @PostMapping("/publicationCreate")
@@ -135,14 +137,15 @@ public class MainController {
         return publicationRepository.save(publication);
     }
 
-    @PutMapping("/publicationUpdate/{publication_id}")
-    public Publication updatePublication(@RequestBody Publication publication) {
+    @PutMapping("/publicationUpdate/{id}")
+    public Publication updatePublication(@PathVariable("id") Long publicationId,@RequestBody Publication publication) {
+        publication.setPublicationId(publicationId);
         return publicationRepository.save(publication);
     }
 
-    @DeleteMapping("publicationDelete/{publication_id}")
-    public void deletePublication(@PathVariable("publication_id") Long publication_id) {
-        publicationRepository.deleteById(publication_id);
+    @DeleteMapping("publicationDelete/{id}")
+    public void deletePublication(@PathVariable("id") Long publicationId) {
+        publicationRepository.deleteById(publicationId);
     }
 
     /*
@@ -154,9 +157,9 @@ public class MainController {
         return researchPaperRepository.findAll();
     }
 
-    @GetMapping("/researchPaper/{research_paper_id}")
-    public Optional<ResearchPapers> ResearchPapersFindById(@PathVariable("research_paper_id") Long research_paper_id) {
-        return researchPaperRepository.findById(research_paper_id);
+    @GetMapping("/researchPaper/{researchPaperId}")
+    public Optional<ResearchPapers> ResearchPapersFindById(@PathVariable("researchPaperId") Long researchPaperId) {
+        return researchPaperRepository.findById(researchPaperId);
     }
 
     @PostMapping("/researchPaperCreate")
@@ -164,14 +167,15 @@ public class MainController {
         return researchPaperRepository.save(researchPapers);
     }
 
-    @PutMapping("/researchPaperUpdate/{publication_id}")
-    public ResearchPapers updateResearchPaper(@RequestBody ResearchPapers researchPapers) {
+    @PutMapping("/researchPaperUpdate/{id}")
+    public ResearchPapers updateResearchPaper(@PathVariable("id") Long researchPaperId,@RequestBody ResearchPapers researchPapers) {
+        researchPapers.setResearchPaperId(researchPaperId);
         return researchPaperRepository.save(researchPapers);
     }
 
-    @DeleteMapping("researchPaperDelete/{research_paper_id}")
-    public void deleteResearchPapers(@PathVariable("research_paper_id") Long research_paper_id) {
-        researchPaperRepository.deleteById(research_paper_id);
+    @DeleteMapping("researchPaperDelete/{id}")
+    public void deleteResearchPapers(@PathVariable("id") Long researchPaperId) {
+        researchPaperRepository.deleteById(researchPaperId);
     }
 }
 
