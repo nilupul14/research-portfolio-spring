@@ -37,7 +37,7 @@ public class MainController {
         return researcherRepository.findAll();
     }
 
-    @GetMapping("/researcher/{id}")
+    @GetMapping("/researcherInfo/{id}")
     public Optional<Researcher> researcherFindById(@PathVariable("id") Long id) {
         return researcherRepository.findById(id);
     }
@@ -67,7 +67,7 @@ public class MainController {
         return authorRepository.findAll();
     }
 
-    @GetMapping("/author/{id}")
+    @GetMapping("/authorInfo/{id}")
     public Optional<Author> authorFindById(@PathVariable("id") Long authorId) {
         return authorRepository.findById(authorId);
     }
@@ -78,14 +78,14 @@ public class MainController {
     }
 
     @PutMapping("/authorUpdate/{id}")
-    public Author updateResearcher(@PathVariable("id") Long authorId,@RequestBody Author author) {
+    public Author updateAuthor(@PathVariable("id") Long authorId,@RequestBody Author author) {
         author.setAuthorId(authorId);
         return authorRepository.save(author);
     }
 
     @DeleteMapping("authorDelete/{id}")
     public void deleteAuthor(@PathVariable("id") Long authorId) {
-        researcherRepository.deleteById(authorId);
+        authorRepository.deleteById(authorId);
     }
 
     /*
@@ -97,7 +97,7 @@ public class MainController {
         return fundRepository.findAll();
     }
 
-    @GetMapping("/fund/{id}")
+    @GetMapping("/fundInfo/{id}")
     public Optional<Fund> FundFindById(@PathVariable("id") Long fundId) {
         return fundRepository.findById(fundId);
     }
@@ -127,7 +127,7 @@ public class MainController {
         return publicationRepository.findAll();
     }
 
-    @GetMapping("/publication/{id}")
+    @GetMapping("/publicationInfo/{id}")
     public Optional<Publication> PublicationFindById(@PathVariable("id") Long publicationId) {
         return publicationRepository.findById(publicationId);
     }
@@ -157,8 +157,8 @@ public class MainController {
         return researchPaperRepository.findAll();
     }
 
-    @GetMapping("/researchPaper/{researchPaperId}")
-    public Optional<ResearchPapers> ResearchPapersFindById(@PathVariable("researchPaperId") Long researchPaperId) {
+    @GetMapping("/researchPaperInfo/{id}")
+    public Optional<ResearchPapers> ResearchPapersFindById(@PathVariable("id") Long researchPaperId) {
         return researchPaperRepository.findById(researchPaperId);
     }
 
