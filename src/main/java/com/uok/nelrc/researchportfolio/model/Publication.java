@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Publication {
@@ -12,6 +13,9 @@ public class Publication {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long publicationId;
+
+
+//    private List<Publication> pubRes;
 
     private String name;
     private String type;
@@ -57,4 +61,12 @@ public class Publication {
     public void setKeyword(String keyword) {
         this.keyword = keyword;
     }
+
+//    public List<Publication> getPubRes() {
+//        return pubRes;
+//    }
+//
+//    public void setPubRes(List<Publication> pubRes) {
+//        this.pubRes = pubRes;
+//    }
 }
